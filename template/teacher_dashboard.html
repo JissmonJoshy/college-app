@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: lightgray;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 50px;
+            position: relative;
+            text-align: center;
+        }
+
+        .dashboard {
+            text-align: center;
+        }
+
+        .dashboard h2 {
+            color: darkblue;
+            margin-bottom: 30px;
+        }
+
+        .dashboard a {
+            display: block;
+            margin: 10px auto;
+            padding: 15px;
+            background-color: darkblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 20px;
+        }
+
+        .dashboard a:hover {
+            background-color: navy;
+        }
+
+        .logout-form {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: navy;
+        }
+
+        @media (max-width: 576px) {
+            .dashboard a {
+                font-size: 18px;
+                padding: 12px;
+                max-width: 100%;
+            }
+
+            .logout-btn {
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container dashboard">
+        <form class="logout-form" method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+        </form><br>
+        <h2>Teacher Dashboard</h2>
+        <a href="{% url 'view_teacher_detail' %}">View Teacher Detail</a>
+        <a href="{% url 'edit_teacher_detail' %}">Edit Teacher Detail</a>
+    </div>
+</body>
+</html>
+

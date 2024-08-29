@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Teacher Details</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: lightgray;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: darkblue;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-secondary {
+            background-color: gray;
+            border-color: gray;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Teacher Details</h2>
+
+        <p><strong>First Name:</strong> {{ teacher.user.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ teacher.user.last_name }}</p>
+        <p><strong>Username:</strong> {{ teacher.user.username }}</p>
+        <p><strong>Email:</strong> {{ teacher.user.email }}</p>
+        <p><strong>Address:</strong> {{ teacher.address }}</p>
+        <p><strong>Age:</strong> {{ teacher.age }}</p>
+        <p><strong>Contact:</strong> {{ teacher.contact }}</p>
+        <p><strong>Course:</strong> {{ teacher.course.coursename }}</p>
+        <p><strong>Photo:</strong></p>
+        <img src="{{ teacher.img.url }}" alt="Teacher Photo">
+
+        <a href="{% url 'teacher_dashboard' %}" class="btn btn-secondary">Back</a>
+    </div>
+
+</body>
+</html>
+
+

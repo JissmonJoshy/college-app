@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: lightgray;
+        }
+
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: darkblue;
+        }
+
+        .form-group label {
+            color: darkgreen;
+        }
+
+        .btn-primary {
+            background-color: darkblue;
+            border-color: darkblue;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: navy;
+            border-color: navy;
+        }
+
+        .btn-secondary {
+            background-color: gray;
+            border-color: gray;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: darkgray;
+            border-color: darkgray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Add Student</h2>
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dateofbirth">Date of Birth</label>
+                <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" required>
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course</label>
+                
+                <select id="course" name="course" class="form-control" required>
+                    <option value="" disabled selected>Select a course</option>
+
+                    {% for crs in courses %}
+                        <option value="{{ crs.id }}">{{ crs.coursename }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+
+</body>
+</html>
+

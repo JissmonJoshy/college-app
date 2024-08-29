@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Registration</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            margin: 0;
+        }
+
+        .signup-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: darkblue;
+        }
+
+        .form-group label {
+            color: darkblue;
+        }
+
+        .signup-container .form-group {
+            margin-bottom: 15px;
+        }
+
+        .signup-container .form-control {
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .signup-container .btn-primary {
+            background-color: darkblue;
+            border-color: darkblue;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .signup-container .text-center {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 576px) {
+            .signup-container {
+                padding: 15px;
+            }
+
+            .signup-container h2 {
+                font-size: 24px;
+            }
+
+            .signup-container .btn-primary {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="signup-container">
+        <h2>Teacher Registration</h2>
+        
+        {% if messages %}                                 <!------- for displaying invalid username and pwd message-->
+            <div class="alert alert-info">
+                {% for msg in messages %}
+                {{msg}}
+
+                {% endfor %}
+                
+            </div>
+            {% endif %}
+
+        <form method="POST" enctype="multipart/form-data" action="{% url 'register' %}">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="text" id="confirm_password" name="confirm_password" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" class="form-control" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact_number">Contact Number</label>
+                <input type="text" id="contact_number" name="contact_number" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course</label>
+                <select id="course" name="course" class="form-control" required>
+                    <option value="" disabled selected>Select a course</option>
+                    {% for course in crs %}
+                        <option value="{{ course.id }}">{{ course.coursename }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Upload Photo</label>
+                <input type="file" id="photo" name="photo" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+
+</body>
+</html>
+
