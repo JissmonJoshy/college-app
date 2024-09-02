@@ -236,15 +236,21 @@ def signup(request):
 
 
 
+
+
 @login_required(login_url='home')
 def teacher_dashboard(request):
     return render(request, 'teacher_dashboard.html')
+
+
 
 
 @login_required(login_url='home')
 def view_teacher_detail(request):
     teacher = Teacher.objects.get(user=request.user)
     return render(request, 'view_teacher_detail.html', {'teacher': teacher})
+
+
 
 
 
@@ -258,11 +264,6 @@ def edit_teacher_detail(request):
         user.last_name = request.POST['lastname']
         user.username = request.POST['username']
         
-        
-        if request.POST['password'] and request.POST['confirm_password']:
-            if request.POST['password'] == request.POST['confirm_password']:
-                user.set_password(request.POST['password'])
-                
         user.email = request.POST['email']
         user.save()
 

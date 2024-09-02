@@ -7,7 +7,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: lightgray;
+            background: url('https://t4.ftcdn.net/jpg/04/61/47/03/360_F_461470323_6TMQSkCCs9XQoTtyer8VCsFypxwRiDGU.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -88,16 +89,12 @@
         {% if messages %}                                 <!------- for displaying invalid username and pwd message-->
             <div class="alert alert-info">
                 {% for msg in messages %}
-                {{msg}}
-
+                {{ msg }}
                 {% endfor %}
-                
             </div>
-            {% endif %}
+        {% endif %}
 
         <form method="POST" action="{% url 'adminlogin' %}">
-
-            
             {% csrf_token %}
             <div class="form-group">
                 <label for="username">Username</label>
@@ -116,3 +113,4 @@
 
 </body>
 </html>
+

@@ -7,15 +7,22 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: lightgray;
+            background-image: url('https://t4.ftcdn.net/jpg/02/75/96/99/360_F_275969992_cf6lDx5Vz0cIgouHW3DJmaXLe0djwFqO.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             margin: 0;
             padding: 0;
+            color: white; /* Ensure text is visible against the background */
         }
 
         .container {
             margin-top: 50px;
             position: relative;
             text-align: center;
+            background: rgba(0, 0, 0, 0.5); /* Adds a dark overlay to make text more readable */
+            padding: 20px;
+            border-radius: 10px;
         }
 
         .dashboard {
@@ -23,7 +30,7 @@
         }
 
         .dashboard h2 {
-            color: darkblue;
+            color: lightblue; /* Changed for better contrast */
             margin-bottom: 30px;
         }
 
@@ -77,15 +84,15 @@
     </style>
 </head>
 <body>
+    <form class="logout-form" method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
     <div class="container dashboard">
-        <form class="logout-form" method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit" class="logout-btn">Logout</button>
-        </form><br>
+        
         <h2>Teacher Dashboard</h2>
         <a href="{% url 'view_teacher_detail' %}">View Teacher Detail</a>
         <a href="{% url 'edit_teacher_detail' %}">Edit Teacher Detail</a>
     </div>
 </body>
 </html>
-

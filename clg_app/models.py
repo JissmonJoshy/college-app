@@ -19,5 +19,5 @@ class Teacher(models.Model):
    course=models.ForeignKey(Addcourse,on_delete=models.CASCADE,null=True)
    address=models.CharField(max_length=50)
    age=models.IntegerField(null=True)
-   contact=models.CharField(max_length=10)
+   contact=models.CharField(max_length=30)
    img=models.ImageField(blank=True,upload_to="image/",null=True) 

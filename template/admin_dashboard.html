@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <style>
         body {
-            background: url('https://source.unsplash.com/random/1600x900') no-repeat center center fixed;
+            background: url('https://png.pngtree.com/background/20210714/original/pngtree-abstract-dark-blue-light-background-picture-image_1219712.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             font-family: Arial, sans-serif;
         }
 
-        .container-fluid {
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-        }
-
         .sidebar {
             background-color: #343a40;
             color: white;
-            width: 250px;
+            height: 100vh;
             padding: 20px;
             position: fixed;
-            height: 100%;
             overflow-y: auto;
         }
 
@@ -51,20 +45,10 @@
         .main-content {
             margin-left: 250px;
             padding: 20px;
-            width: 100%;
             background-color: rgba(255, 255, 255, 0.8);
-            position: relative;
-        }
-
-        .main-content h2 {
-            text-align: center;
-            margin-bottom: 20px;
         }
 
         .logout-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             background-color: #dc3545;
             color: white;
             border: none;
@@ -90,28 +74,58 @@
             .main-content {
                 margin-left: 0;
             }
+
+            .logout-btn {
+                width: 100%;
+                text-align: center;
+                position: static;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .sidebar a {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            .logout-btn {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid p-0 d-flex flex-wrap">
 
-        <div class="sidebar">
+        <div class="sidebar col-12 col-md-3 col-lg-2">
             <h2>Admin Dashboard</h2>
             <a href="{% url 'add_course' %}">Add Course</a>
             <a href="{% url 'add_student' %}">Add Student</a>
             <a href="{% url 'show_std_details' %}">Show Students</a>
             <a href="{% url 'show_teachers' %}">Show Teachers</a>
         </div>
-        
-        <div class="main-content">
-            <h2>Welcome to Admin Dashboard</h2>
-            <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+
+        <div class="main-content col-12 col-md-9 col-lg-10">
+            <h2 class="text-center">Welcome to Admin Dashboard</h2>
+            <a href="{% url 'logout' %}" class="logout-btn float-right">Logout</a>
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
+'
+
 
 

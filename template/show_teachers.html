@@ -89,6 +89,13 @@
                 margin-bottom: 10px;
             }
         }
+
+        /* Style for the back button */
+        .back-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -97,7 +104,6 @@
     <div class="container">
         <div class="header">
             <h2>Teachers List</h2>
-            <a href="{% url 'admin_dashboard' %}" class="btn btn-info">Back to Dashboard</a>
         </div>
 
         <table class="table table-striped">
@@ -138,12 +144,16 @@
                 </tr>
                 {% endfor %}
             </tbody>
-
         </table>
+
+        <div class="back-button-container">
+            <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
     </div>
 
 </body>
 </html>
+
 
 
 
